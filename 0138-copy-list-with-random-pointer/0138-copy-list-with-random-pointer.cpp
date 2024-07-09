@@ -13,46 +13,22 @@ public:
     }
 };
 */
-
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        
-        while(!head)
-            return nullptr;
-         
-        // Step 1: Create new nodes and insert them after each original node
-        Node* curr = head;
-        while (curr) {
-            Node* newNode = new Node(curr->val);
-            newNode->next = curr->next;
-            curr->next = newNode;
-            curr = newNode->next;
+        map<Node*, Node*> m;
+        int i=0;
+        Node* ptr = head;
+        while (ptr) {
+            m[ptr] =new Node(ptr->val);
+            ptr = ptr->next;
         }
-        
-        // Step 2: Assign random pointers for the new nodes
-        curr = head;
-        while (curr) {
-            if (curr->random) {
-                curr->next->random = curr->random->next;
-            }
-            curr = curr->next->next;
+        ptr = head;
+        while (ptr) {
+            m[ptr]->next = m[ptr->next];
+            m[ptr]->random = m[ptr->random];
+            ptr = ptr->next;
         }
-        
-        // Step 3: Separate the two lists
-        curr = head;
-        Node* newHead = head->next;
-        Node* copyCurr = newHead;
-        
-        while (curr) {
-            curr->next = curr->next->next;
-            if (copyCurr->next) {
-                copyCurr->next = copyCurr->next->next;
-            }
-            curr = curr->next;
-            copyCurr = copyCurr->next;
-        }
-        
-        return newHead;
+        return m[head];
     }
 };
