@@ -1,27 +1,3 @@
-// class Solution {
-// public:
-//     int maxProduct(vector<int>& arr) {
-// int p=1, maxp=INT_MIN;
-//         int n=arr.size();
-//      for(int i=0;i<n;i++){
-//          p*=arr[i];
-//          maxp=max(maxp,p);
-         
-//          if(p==0){
-//              p=1;
-//          }
-//      }
-//      p=1;
-//      for(int i=n-1;i>=0;i--){
-//            p*=arr[i];
-//          maxp=max(maxp,p);
-//           if(p==0){
-//              p=1;
-//          } 
-//      }
-//      return maxp;
-//        }
-// 	   };
 
 class Solution {
 public:
@@ -70,3 +46,4 @@ public:
         return maxp;
     }
 };
+
