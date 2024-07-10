@@ -3,7 +3,7 @@ public:
     bool subsetsum(vector<int>& nums, int target, int index, vector<vector<int>>& memo) {
         int n = nums.size();
         if (target == 0) return true;
-        if (index == n || target < 0) return false;
+        if (index == n ) return false;
         
         // Check memoization
         if (memo[index][target] != -1) return memo[index][target];
