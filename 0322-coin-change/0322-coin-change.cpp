@@ -49,14 +49,15 @@ public:
         if (dp[index][amount] != -1)
             return dp[index][amount]; // Return memoized result
         
-        int exclude = mincoin(coins, amount, dp, index + 1);
-        int include = INT_MAX;
+          int include = INT_MAX;
         if (coins[index] <= amount) {
             int res = mincoin(coins, amount - coins[index], dp, index);
             if (res != INT_MAX) {
                 include = res + 1;
             }
         }
+        int exclude = mincoin(coins, amount, dp, index + 1);
+      
         return dp[index][amount] = min(exclude, include);
     }
 
