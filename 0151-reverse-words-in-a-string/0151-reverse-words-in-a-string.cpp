@@ -26,9 +26,9 @@ class Solution {
 public:
     string reverseWords(string s) {
         stack<string> words;
-        string word;
-
-        for (int i = 0; i <= s.size(); i++) {
+        string word="";
+        int prev=0;
+        for (int i = 0; i < s.size(); i++) {
             if (i == s.size() || s[i] == ' ') {
                 if (!word.empty()) {
                     words.push(word);
@@ -37,17 +37,25 @@ public:
             } else {
                 word += s[i];
             }
+           
+            
+            
+            
+        }
+         // Handle the last word
+        if (!word.empty()) {
+            words.push(word);
         }
 
         string result;
         while (!words.empty()) {
             result += words.top();
             words.pop();
-            if (!words.empty()) {
+           if (!words.empty()) {
                 result += ' ';
-            }
-        }
+          }
+     }
 
-        return result;
+        return result ;
     }
 };
