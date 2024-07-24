@@ -29,18 +29,14 @@ public:
         string word="";
         int prev=0;
         for (int i = 0; i < s.size(); i++) {
-            if (i == s.size() || s[i] == ' ') {
+            if (s[i] == ' ') {
                 if (!word.empty()) {
                     words.push(word);
                     word.clear();
                 }
             } else {
                 word += s[i];
-            }
-           
-            
-            
-            
+            }       
         }
          // Handle the last word
         if (!word.empty()) {
